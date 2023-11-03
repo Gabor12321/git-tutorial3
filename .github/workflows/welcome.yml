@@ -1,27 +1,20 @@
-name: rerun test workflow
-on: workflow_dispatch
-
-permissions: read-all
-        
+name: rerun 1
+on:
+  workflow_dispatch:
 jobs:
-#job_id value is: my_rerun_job
-  my_rerun_job:
-          runs-on: ubuntu-latest
-          steps:
-           - name: Checkout repository
-             uses: actions/checkout@v4
-           - run: gh api \
-                  --method POST \
-                  -H "Accept: application/vnd.github+json" \
-                  -H "X-GitHub-Api-Version: 2022-11-28" \
-                  /repos/${{ github.repository_owner }}/${{ github.event.repository.name }}/actions/jobs/jobs.my_rerun_job/rerun --body "is this necessary here?"
-              env: 
-               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-               OWNER: ${{ github.repository_owner }}
-               REPO: ${{ github.event.repository.name }}
-
-  
-# - run: gh pr comment $PR_URL --body "Welcome to the repository!"
-#   env:
-#    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#    PR_URL: ${{ github.event.pull_request.html_url }}
+  rerun:
+       runs-on: ubuntu-latest
+       permissions: {}
+       steps:
+        - uses: actions/checkout@v4
+        - env:
+            GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            GH_OWNER_AND_REPO: ${{ github.repository }}
+       
+        - run: |
+           curl -L \
+           -X POST \
+           -H "Authorization: Bearer $GH_TOKEN" \
+           -H "Accept: application/vnd.github+json" \
+           -H "X-GitHub-Api-Version: 2022-11-28" \
+           --url "https://api.github.com/repos/$GH_OWNER_AND_REPO/actions/jobs/jobs.use_api/rerun" 
