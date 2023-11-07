@@ -12,6 +12,5 @@ jobs:
         uses: actions/checkout@v4
 
       - name: test github action env var
-        run: echo "${{ github.action }}"
-
-      # echo "This workflow is named ${{ github.action }}"
+        run: |
+          echo "This workflow is named ${{ github.action }}"
