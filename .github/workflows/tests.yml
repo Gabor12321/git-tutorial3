@@ -9,8 +9,8 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
 
-      - name: test github.workflow
+      - name: Display Workflow Name
         run: |
-          echo "The name of an individual action ${{ github.workflow }}"
+          echo "This workflow is named ${{ github.action }}"
