@@ -1,20 +1,14 @@
-name: list environment variables
+name: name of the action currently running
 
-on:
-  workflow_dispatch
-
-env:
-  DAY_OF_WEEK: Monday
+on: workflow_dispatch
 
 jobs:
-  greeting_job:
+  job_name:
     runs-on: ubuntu-latest
-    env:
-      Greeting: Hello
+    
     steps:
-      - name: "Say Hello Mona it's Monday"
-        run: echo ${{ github.repository }}
-        env:
-          First_Name: Mona
+    - name: my first name step
+      id: my first id step
+      run: echo ${{ github.action }}
 
 
