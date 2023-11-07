@@ -4,9 +4,9 @@ on:
   workflow_dispatch
 
 jobs:
-  greeting_job:
+  env_var_test_job:
     runs-on: ubuntu-latest
     steps:
      - name: "list the entire set of environment variables"
-       run: env
+       run: echo $GITHUB_WORKSPACE
 
