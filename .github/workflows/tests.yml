@@ -13,7 +13,6 @@ jobs:
       Greeting: Hello
     steps:
       - name: "Say Hello Mona it's Monday"
-        if: $DAY_OF_WEEK == 'Monday'
         run: echo ${{ github.repository }}
         env:
           First_Name: Mona
