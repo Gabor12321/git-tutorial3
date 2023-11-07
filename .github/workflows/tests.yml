@@ -9,7 +9,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: "16"
+         node:16
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
