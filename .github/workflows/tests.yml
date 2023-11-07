@@ -1,4 +1,4 @@
-name: test
+name: My GitHub Actions Workflow
 
 on:
   workflow_dispatch
@@ -12,7 +12,6 @@ jobs:
         uses: actions/checkout@v2
 
       - name: test github action env var
-        run: echo ${{ github.action }}
-       
+        run: echo "${{ github.action }}"
 
-
+      # echo "This workflow is named ${{ github.action }}"
