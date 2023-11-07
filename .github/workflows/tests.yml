@@ -11,7 +11,7 @@ jobs:
     - name: My first step - check out repository
       uses: actions/checkout@v4
     - name: Use local hello-world-action
-      uses: ./.github/actions/hello-world-action
+      uses: ./.github/actions/action
     - name: my first name step
       run: echo ${{ github.action }}
 
