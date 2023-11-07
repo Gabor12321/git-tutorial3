@@ -1,18 +1,18 @@
-name: name of the action currently running
+name: test
 
-on: workflow_dispatch
+on:
+  workflow_dispatch
 
 jobs:
-  job_name:
-    runs-on: ubuntu-latest    
+  build:
+    runs-on: ubuntu-latest
+
     steps:
-    #This step checks out a copy of your repository.
-    - name: My first step - check out repository
-      id: action_in_step_1 
-      #is this an action?
-      uses: actions/checkout@v4
-    - name: step 2 write out the name of the action currently running
-      run: echo "The id of a step currently running:" \
-           ${{ github.action }}
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: test github action env var
+        run: echo ${{ github.action }}
+       
 
 
