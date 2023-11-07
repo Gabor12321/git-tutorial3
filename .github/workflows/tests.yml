@@ -6,7 +6,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        shell: bash
+        working-directory: "16"
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
