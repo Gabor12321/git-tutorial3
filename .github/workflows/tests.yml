@@ -8,7 +8,7 @@ jobs:
     
     steps:
     - name: my first name step
-      id: my first id step
+      id: my_first_id_step
       run: echo ${{ github.action }}
 
 
