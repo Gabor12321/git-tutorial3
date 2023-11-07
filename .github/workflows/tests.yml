@@ -9,10 +9,9 @@ jobs:
     steps:
     #This step checks out a copy of your repository.
     - name: My first step - check out repository
+      #is this an action?
       uses: actions/checkout@v4
-    - name: Use local hello-world-action
-      uses: ./.github/actions/action
-    - name: my first name step
-      run: echo ${{ github.action }}
+    - name: step 2 write out the name of the action currently running
+      run: echo "The name of the action currently running:" \ ${{ github.action }}
 
 
