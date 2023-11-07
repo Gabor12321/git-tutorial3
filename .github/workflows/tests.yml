@@ -1,0 +1,12 @@
+name: list environment variables
+
+on:
+  workflow_dispatch
+
+jobs:
+  greeting_job:
+    runs-on: ubuntu-latest
+    steps:
+     - name: "list the entire set of environment variables"
+       run: env
+
