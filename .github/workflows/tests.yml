@@ -11,6 +11,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: test github action env var
+      - name: test github.job
         run: |
-          echo "This workflow is named ${{ github.action }}"
+          echo "The name of an individual action ${{ github.job }}"
