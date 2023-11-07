@@ -4,14 +4,17 @@ on: workflow_dispatch
 
 jobs:
   job_name:
+  id: job_id
     runs-on: ubuntu-latest
     
     steps:
     #This step checks out a copy of your repository.
     - name: My first step - check out repository
+      id: action_in_step_1 
       #is this an action?
       uses: actions/checkout@v4
     - name: step 2 write out the name of the action currently running
-      run: echo "The name of the action currently running:" \ ${{ github.action }}
+      run: echo "The name of the action currently running:" 
+      ${{ github.action.jobs.job_id.steps.action_in_step_1 }}
 
 
