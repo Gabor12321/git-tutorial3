@@ -12,7 +12,7 @@ jobs:
       #is this an action?
       uses: actions/checkout@v4
     - name: step 2 write out the name of the action currently running
-      run: echo "The name of the action currently running:" \
-           ${{ github.action.action_in_step_1 }}
+      run: echo "The id of a step currently running:" \
+           ${{ github.action }}
 
 
