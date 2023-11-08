@@ -8,11 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout Repository
+      - name: Checkout Repository and  Set Environment Variable
         uses: actions/checkout@v4
         env:
-         g_a_r: ${{ github.action.repository }}
-          
-      - name: Display owner and repository name of action
-        run: |
-          echo "This workflow is named: ${{ env.g_a_r }}"
+          MY_VARIABLE: ${{ GITHUB.ACTION.REPOSITORY }}
+
+      - name: Use Environment Variable
+        run: echo "The value of MY_VARIABLE is ${{ env.MY_VARIABLE }}"
