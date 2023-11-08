@@ -14,10 +14,5 @@ jobs:
       - name: Set the value
         id: step_one
         run: |
-            echo "action_state=yellow" >> "$GITHUB_ENV" \
-            echo "the path from this step to the github_env file: "$GITHUB_ENV
-      - name: Use the value
-        id: step_two
-        run: |
-          printf '%s\n' "$action_state" # This will output 'yellow' \
-          echo "the path from this step to the github_env file: "$GITHUB_ENV
+            echo "$GITHUB_EVENT_PATH"
+
