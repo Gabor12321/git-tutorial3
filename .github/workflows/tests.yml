@@ -8,10 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout Repository and  Set Environment Variable
+      - name: Checkout Repository 
         uses: actions/checkout@v4
-        env:
-          MY_VARIABLE: ${{ GITHUB.ACTION.REPOSITORY }}
 
       - name: Use Environment Variable
-        run: echo "The value of MY_VARIABLE is ${{ env.MY_VARIABLE }}"
+        run: echo "$GITHUB_ACTOR"
