@@ -15,4 +15,4 @@ jobs:
           
       - name: Display owner and repository name of action
         run: |
-          echo "This workflow is named $g_a_r"
+          echo "This workflow is named: ${{ g_a_r }}"
