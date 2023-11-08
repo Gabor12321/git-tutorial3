@@ -1,4 +1,4 @@
-name: My GitHub Actions Workflow
+name: tests
 
 on:
   workflow_dispatch
@@ -12,4 +12,4 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Use Environment Variable
-        run: echo "$GITHUB_ACTOR"
+        run: echo "$GITHUB_API_URL"
