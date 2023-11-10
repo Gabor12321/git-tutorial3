@@ -7,14 +7,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+     SELECTED_COLOR: ${{ steps.color-selector.outputs.SELECTED_COLOR }}
     
     steps:
       - name: Set color
         id: color-selector
         run:    echo "SELECTED_COLOR=green" >> "$GITHUB_OUTPUT" 
       - name: Get color
-        env:
-          SELECTED_COLOR: ${{ steps.color-selector.outputs.SELECTED_COLOR }}
         run: echo "The selected color is $SELECTED_COLOR" 
 
   build2:
@@ -24,8 +24,10 @@ jobs:
     steps:
       - name: survived first job
         id: second_job
-        run: echo "The selected color from previous job is $SELECTED_COLOR" 
-             echo "$SELECTED_COLOR survived first job!"
+        env:
+         lastjob_output: ${{ needs.color-selector.outputs.SELECTED_COLOR }}
+        run: echo "The selected color from previous job is $lastjob_output" 
+             echo "$lastjob_output survived first job!"
 
 
         
