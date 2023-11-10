@@ -13,6 +13,6 @@ jobs:
     - name: Set color
       env:
         test: ${{ github.ref }}
-        run: echo "current branch is $test"
+      run: echo "current branch is $test"
 
         
