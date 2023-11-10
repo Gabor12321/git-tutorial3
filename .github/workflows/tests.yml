@@ -11,6 +11,6 @@ jobs:
     
     steps:
       - name: Set color
-        run: echo "$HOME"
+        run: echo "$GITHUB_REF"
 
         
