@@ -11,8 +11,6 @@ jobs:
     
     steps:
     - name: Set color
-      env:
-        test: ${{ github.ref }}
-      run: echo "current branch is $test"
+      run: echo "current branch is $GITHUB_REF_TYPE"
 
         
