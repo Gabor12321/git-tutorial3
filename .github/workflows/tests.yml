@@ -9,10 +9,27 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout Repository 
-        uses: actions/checkout@v4
+      - name: Set color
+        id: color-selector
+        run:    echo "SELECTED_COLOR=green" >> "$GITHUB_OUTPUT" 
+                "action_state=yellow" >> "$GITHUB_ENV"
+      - name: Get color
+        env:
+          SELECTED_COLOR: ${{ steps.color-selector.outputs.SELECTED_COLOR }}
+        run: echo "The selected color is $SELECTED_COLOR" 
+             printf '%s\n' "$action_state" # This will output 'yellow'
 
-      - name: GITHUB_EVENT_PATH
-        id: step_one
-        run: |
-            echo "$GITHUB_HEAD_REF"
+  build2:
+    needs: build
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: survived first job
+        id: second_job
+        env:
+          SELECTED_COLOR: ${{ steps.color-selector.outputs.SELECTED_COLOR }}
+        run: echo "The selected color is $SELECTED_COLOR" \
+             echo "$GITHUB_OUTPUT survived first job!"
+             printf '%s\n' "$action_state (should be yellow) did not survive first job!" 
+             echo "$GITHUB_ENV did not survive first job"
+        
