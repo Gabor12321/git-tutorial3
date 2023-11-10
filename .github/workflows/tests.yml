@@ -24,8 +24,6 @@ jobs:
     steps:
       - name: survived first job
         id: second_job
-        env:
-          SELECTED_COLOR: ${{ steps.color-selector.outputs.SELECTED_COLOR }}
         run: echo "The selected color from previous job is $SELECTED_COLOR" 
              echo "$SELECTED_COLOR survived first job!"
 
