@@ -27,7 +27,7 @@ jobs:
       - name: survived first job
         id: second_job
         env:
-         lastjob_output: ${{ needs.color-selector.outputs.SELECTED_COLOR }}
+         lastjob_output: ${{ needs.build.outputs.SELECTED_COLOR }}
         run: echo "The selected color from previous job is $lastjob_output" 
              echo "$lastjob_output survived first job!"
 
